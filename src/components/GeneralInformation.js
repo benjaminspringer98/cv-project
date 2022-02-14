@@ -6,8 +6,12 @@ class GeneralInformation extends Component {
   
       this.state = {
         name: '',
-        mail: '',
-        phone: ''
+        email: '',
+        phone: '',      
+        mode: {
+          name: 'edit',
+          buttonText: 'Save'
+        }
       };
 
       this.handleChange = this.handleChange.bind(this);
@@ -15,50 +19,57 @@ class GeneralInformation extends Component {
     }
 
     handleChange = (e) => {
-      if(e.target.id === 'nameInput') {
-        this.setState({
-          name: e.target.value
-        });
-      }
-      else if(e.target.id === 'mailInput') {
-        this.setState({
-          mail: e.target.value
-        });
-      }
-      else if(e.target.id === 'phoneInput') {
-        this.setState({
-          phone: e.target.value
-        });
-      }
+      const id = e.target.id;
+      const value = e.target.value;
+      this.setState({
+        [id]: value
+      });
     };
 
     onSubmit = (e) => {
       e.preventDefault();
-      this.setState({
-        name: '',
-        mail: '',
-        phone: ''
-      });
+
+      if(this.state.mode.name === 'edit') {
+        this.setState({          
+          mode: {
+            name: 'display',
+            buttonText: 'Edit'
+          }
+        });
+      }
+      else {
+        this.setState({
+          mode: {         
+            name: 'edit',
+            buttonText: 'Save'
+          }
+        })
+      }
     };
-  
+
       render() {
-        const { name, phone, mail } = this.state;
+        const { name, phone, mail, mode} = this.state;
+
+        let readOnly;
+        if(mode.name === 'display') {
+          readOnly = true;
+        }
 
         return (
           <div>
             <form onSubmit={this.onSubmit}>
-                <label htmlFor="nameInput">Name</label>
-                <input onChange={this.handleChange} value={name} type="text" id="nameInput"/>
-                <label htmlFor="mailInput">E-Mail</label>
-                <input onChange={this.handleChange} value={mail} type="text" id="mailInput"/>
-                <label htmlFor="phoneInput">Phone</label>
-                <input onChange={this.handleChange} value={phone} type="text" id="phoneInput"/>
+                <label htmlFor="name">Name</label>
+                <input onChange={this.handleChange} value={name} type="text" id="name" readOnly={readOnly}/>
+                <label htmlFor="email">E-Mail</label>
+                <input onChange={this.handleChange} value={mail} type="text" id="email" readOnly={readOnly}/>
+                <label htmlFor="phone">Phone</label>
+                <input onChange={this.handleChange} value={phone} type="text" id="phone" readOnly={readOnly}/>
                 <button type="submit">
-                    Save
+                  {mode.buttonText}
                 </button>        
             </form>
           </div>
-        ); 
+        );
       }
     
   }
