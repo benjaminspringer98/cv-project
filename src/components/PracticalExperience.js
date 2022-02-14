@@ -11,7 +11,7 @@ class PracticalExperience extends Component {
       render() {
         return (
           <div>
-            hello
+            
           </div>
         ); 
       }
