@@ -11,7 +11,7 @@ class EducationalExperience extends Component {
           dateFrom: '',
           dateTo: '',  
           id: uniqid(),   
-        data: []
+          data: []
       };
     }
 
@@ -37,9 +37,14 @@ class EducationalExperience extends Component {
       });
     };
 
+    deleteEducation = (id) => {
+      this.setState({
+        data: this.state.data.filter(education => education.id !== id)
+      });
+    };
   
       render() {
-        const  { data, school, qualification, dateFrom, dateTo, id } = this.state;
+        const  { data, school, qualification, dateFrom, dateTo } = this.state;
 
         return (
           <div>
@@ -59,13 +64,11 @@ class EducationalExperience extends Component {
             </form>
            <ul>
             {data.map((education) => {
-              {console.log(education)}
-              return <li key={id}><p>{education.school}</p>
-                                   <p>{education.qualification}</p>
-                                   <p>{education.dateFrom}</p>
-                                   <p>{education.dateTo}</p>
-                                   <p>{education.id}</p>
-
+              return <li key={education.id}><p>School: {education.school}</p>
+                                            <p>Qualification: {education.qualification}</p>
+                                            <p>From: {education.dateFrom}</p>
+                                            <p>To: {education.dateTo}</p>
+                                            <button type="button" onClick={() => this.deleteEducation(education.id)}>Delete</button>
                      </li>;      
             })}
           </ul>
