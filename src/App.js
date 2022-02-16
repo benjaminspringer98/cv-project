@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import GeneralInformation from "./components/GeneralInformation";
 import EducationalExperience from "./components/EducationalExperience"
 import './styles/main.css'
+import PracticalExperience from "./components/PracticalExperience";
 
 class App extends Component {
   constructor() {
@@ -34,6 +35,7 @@ class App extends Component {
           <button onClick={this.changeMode}>{this.state.buttonText}</button>
           <GeneralInformation mode={this.state.mode}/>
           <EducationalExperience mode={this.state.mode}/>
+          <PracticalExperience mode={this.state.mode}/>
         </div>
       ); 
     }
