@@ -8,15 +8,32 @@ class App extends Component {
     super();
 
     this.state = {
+      mode: 'edit',
+      buttonText: 'Preview'
     }
   }
+
+  changeMode = () => {
+    if(this.state.mode === 'edit') {
+      this.setState({
+        mode: 'preview',
+        buttonText: 'Edit'
+      });
+    } else {
+      this.setState({
+        mode: 'edit',
+        buttonText: 'Preview'
+      });
+    }   
+  };
 
     render() {
       return (
         <div>
           <h1>CV Generator</h1>
-          <GeneralInformation/>
-          <EducationalExperience/>
+          <button onClick={this.changeMode}>{this.state.buttonText}</button>
+          <GeneralInformation mode={this.state.mode}/>
+          <EducationalExperience mode={this.state.mode}/>
         </div>
       ); 
     }
