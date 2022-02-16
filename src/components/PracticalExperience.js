@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import uniqid from "uniqid";
+import '../styles/Section.css'
 
 class PracticalExperience extends Component {
     constructor(props) {
@@ -50,7 +51,7 @@ class PracticalExperience extends Component {
 
         if(this.props.mode === 'edit') {
           return (
-            <div>
+            <div className="section">
               <h2>Practical Experience</h2>
               <form onSubmit={this.onSubmit}>
                   <label htmlFor="schoolInput">Company</label>
@@ -63,7 +64,7 @@ class PracticalExperience extends Component {
                   <input onChange={this.handleChange} value={dateFrom} type="date" id="dateFrom" name="dateFrom"/>
                   <label htmlFor="dateTo">To</label>
                   <input onChange={this.handleChange} value={dateTo} type="date" id="dateTo" name="dateTo"/>
-                  <button type="submit">
+                  <button type="submit" className="addButton">
                     Add
                   </button>        
               </form>
@@ -74,7 +75,7 @@ class PracticalExperience extends Component {
                                               <p>Tasks: {job.tasks}</p>
                                               <p>From: {job.dateFrom}</p>
                                               <p>To: {job.dateTo}</p>
-                                              <button type="button" onClick={() => this.deleteJob(job.id)}>Delete</button>
+                                              <button type="button" className="deleteButton" onClick={() => this.deleteJob(job.id)}>Delete</button>
                       </li>;      
               })}
             </ul>
@@ -82,16 +83,18 @@ class PracticalExperience extends Component {
           );
       } else {
           return (
-            <ul>
-                {data.map((job) => {
-                  return <li key={job.id}><p>Company: {job.school}</p>
-                                                <p>Position: {job.position}</p>
-                                                <p>Tasks: {job.tasks}</p>
-                                                <p>From: {job.dateFrom}</p>
-                                                <p>To: {job.dateTo}</p>                                              
-                        </li>;      
-                })}
+            <div className="section">
+              <ul>
+                  {data.map((job) => {
+                    return <li key={job.id}><p>Company: {job.school}</p>
+                                                  <p>Position: {job.position}</p>
+                                                  <p>Tasks: {job.tasks}</p>
+                                                  <p>From: {job.dateFrom}</p>
+                                                  <p>To: {job.dateTo}</p>                                              
+                          </li>;      
+                  })}
               </ul>
+            </div>
           );
       }
     }  

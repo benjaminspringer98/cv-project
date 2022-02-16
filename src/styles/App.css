@@ -1,0 +1,47 @@
+body {
+    display: flex;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.toggleButton {
+    padding: 5px;
+    border: none;
+    border-radius: 2px;
+    background-color: rgba(159, 211, 241, 0.966);
+}
+
+.toggleButton:hover {
+    background-color: rgba(139, 180, 204, 0.966);
+}
+
+.deleteButton {
+    padding: 5px;
+    border: none;
+    border-radius: 2px;
+    background-color: rgb(235, 50, 17);
+}
+
+.deleteButton:hover {
+    background-color: rgb(189, 52, 27);
+}
+
+
+.addButton {
+    padding: 5px;
+    border: none;
+    border-radius: 2px;
+    background-color: rgb(151, 233, 151);
+}
+
+.addButton:hover {
+    background-color: rgb(140, 212, 140);
+}
+
+input {
+    display: block;
+}
+
+ul {
+    list-style: none;
+}

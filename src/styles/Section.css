@@ -1,0 +1,13 @@
+.section {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(201, 201, 201, 0.555);
+    padding: 10px;
+    margin: 5px;
+}
+
+.section input {
+    border: none;
+    width: 75%;
+    margin: 5px;
+}

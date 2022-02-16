@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import uniqid from "uniqid";
+import '../styles/Section.css'
 
 class EducationalExperience extends Component {
     constructor(props) {
@@ -49,7 +50,7 @@ class EducationalExperience extends Component {
 
         if(this.props.mode === 'edit') {
           return (
-            <div>
+            <div className="section">
               <h2>Educational Experience</h2>
               <form onSubmit={this.onSubmit}>
                   <label htmlFor="schoolInput">School</label>
@@ -60,7 +61,7 @@ class EducationalExperience extends Component {
                   <input onChange={this.handleChange} value={dateFrom} type="date" id="dateFrom" name="dateFrom"/>
                   <label htmlFor="dateTo">To</label>
                   <input onChange={this.handleChange} value={dateTo} type="date" id="dateTo" name="dateTo"/>
-                  <button type="submit">
+                  <button type="submit" className="addButton">
                     Add
                   </button>        
               </form>
@@ -70,7 +71,7 @@ class EducationalExperience extends Component {
                                               <p>Qualification: {education.qualification}</p>
                                               <p>From: {education.dateFrom}</p>
                                               <p>To: {education.dateTo}</p>
-                                              <button type="button" onClick={() => this.deleteEducation(education.id)}>Delete</button>
+                                              <button type="button" className="deleteButton" onClick={() => this.deleteEducation(education.id)}>Delete</button>
                       </li>;      
               })}
             </ul>
@@ -78,15 +79,17 @@ class EducationalExperience extends Component {
           );
       } else {
           return (
-            <ul>
-                {data.map((education) => {
-                  return <li key={education.id}><p>School: {education.school}</p>
-                                                <p>Qualification: {education.qualification}</p>
-                                                <p>From: {education.dateFrom}</p>
-                                                <p>To: {education.dateTo}</p>                                              
-                        </li>;      
-                })}
+            <div className="section">
+              <ul>
+                  {data.map((education) => {
+                    return <li key={education.id}><p>School: {education.school}</p>
+                                                  <p>Qualification: {education.qualification}</p>
+                                                  <p>From: {education.dateFrom}</p>
+                                                  <p>To: {education.dateTo}</p>                                              
+                          </li>;      
+                  })}
               </ul>
+            </div>
           );
       }
     }  

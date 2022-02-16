@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import '../styles/Section.css'
 
 class GeneralInformation extends Component {
     constructor(props) {
@@ -25,7 +26,7 @@ class GeneralInformation extends Component {
 
         if(this.props.mode === 'edit') {          
           return (
-            <div>
+            <div className="section">
               <form>
                   <label htmlFor="name">Name</label>
                   <input onChange={this.handleChange} value={name} type="text" id="name" readOnly={readOnly}/>
@@ -39,7 +40,7 @@ class GeneralInformation extends Component {
           );
         } else {
           return (
-            <div>
+            <div className="section">
               <p>Name: {name}</p>
               <p>E-Mail: {email}</p>
               <p>Phone: {phone}</p>
